@@ -1,6 +1,5 @@
 <?php
 include "init.php";
-
 ?>
 
 <div class="container">

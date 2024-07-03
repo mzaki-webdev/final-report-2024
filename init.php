@@ -6,11 +6,12 @@ include_once "connect.php";
 
 $template__path = 'include/templates/';
 
-$functions__path = 'include/functions/';
-
 $css__path = 'layout/css/';
 
 $js__path = 'layout/js/';
+
+$views__path = '../views/';
+
 
 // Functions
 
@@ -24,6 +25,15 @@ function page_title(){
         $pageTitle = 'Default';
         return $pageTitle;
     }
+}
+
+// Dump function
+function dd($target_var){
+
+    echo "<pre>";
+        print_r($target_var);
+    echo "</pre>";
+    die();
 }
 
 // Including common files
