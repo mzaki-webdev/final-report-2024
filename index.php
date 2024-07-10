@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-4 col-sm-12 mt-5 mx-auto">
-                <form class="login" action="controllers/report.php" method = "POST">
+                <form action="controllers/report.php" method = "POST">
                 
                 <div class="text-center">
                     <img src="layout/images/logo.webp" class="logo mt-5 mb-3" alt="Logo" 

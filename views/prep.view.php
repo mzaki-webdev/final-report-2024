@@ -3,8 +3,14 @@
 <!-- ============================================================================================= -->
 
 <?php
+    if($res['payments'] == 0 && $res['failed'] == 0):
+
+    header('Location: ../msg.php'); 
+        exit();
+    endif;
+    
     if($res['grade'] == 7 || $res['grade'] == 8):
-        if($res['payments'] == 0 && $res['failed'] == 0):
+        
             $res['grade'] == 7 ? $grade = "Preparatory 1": $grade = "Preparatory 2";
 ?>
             <!--Prep page-->
@@ -183,11 +189,6 @@
                 <!-- Student Report End { Prep. } -->
 
 <?php
-    endif;
-    
-    else:
-        header('Location: ../msg.php'); 
-        exit();
     endif;
     
     require $template__path . "footer.php";

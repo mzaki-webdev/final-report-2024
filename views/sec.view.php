@@ -3,10 +3,9 @@
 <!-- ============================================================================================= -->
 
 <?php
-    if($res['grade'] == 10 || $res['grade'] == 11):
-        if($res['payments'] == 0 && $res['failed'] == 0):
-            $res['grade'] == 10 ? $grade = "Secondary 1": $grade = "Secondary 2";
-            if($grade == "Secondary 1"):
+if($res['grade'] == 10 || $res['grade'] == 11):
+    $res['grade'] == 10 ? $grade_name = "Secondary 1": $grade_name = "Secondary 2";
+    if($grade_name == "Secondary 1"):
 ?>
 
     <!-- SEC 1 page-->
@@ -29,7 +28,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Grade</th>
-                                                <td colspan="2"><?php echo $grade;?></td>
+                                                <td colspan="2"><?php echo $grade_name;?></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Year</th>
@@ -201,7 +200,7 @@
 
             <?php    
             // Science division
-            elseif($grade == "Secondary 2" && $res['division'] == 1):
+            elseif($grade_name == "Secondary 2" && $res['division'] == 1):
             ?>
             <!-- SEC 2 Science devision-->
             
@@ -223,7 +222,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Grade</th>
-                                                <td colspan="2"><?php echo $grade;?></td>
+                                                <td colspan="2"><?php echo $grade_name; ?></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Year</th>
@@ -384,7 +383,7 @@
 
             <?php
             // Arts division
-            elseif($grade == "Secondary 2" && $res['division'] == 2):
+            elseif($grade_name == "Secondary 2" && $res['division'] == 2):
             ?>
             <!-- SEC 2 Arts devision-->
             
@@ -406,7 +405,7 @@
                                             </tr>
                                             <tr>
                                                 <th scope="row">Grade</th>
-                                                <td colspan="2"><?php echo $grade;?></td>
+                                                <td colspan="2"><?php echo $grade_name;?></td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">Year</th>
@@ -568,12 +567,7 @@
 
 <?php
     endif;
-    endif;
 
-    else:
-        header('Location: ../msg.php'); 
-        exit();
-    
     endif;
     
     require $template__path . "footer.php";

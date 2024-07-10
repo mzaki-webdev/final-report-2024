@@ -16,11 +16,22 @@
         'Secondary 2'=> $views__path . '/sec.view.php'
     ];
 
-    function getQueryByStudentId($id, $table, $conn){
+    function getStudentsDataByID($id, $table, $conn){
         $sql = "SELECT * FROM $table WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->execute([$id]);
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($res['failed'] != 0):
+            header('Location: ../views/failed.msg.view.php'); 
+            exit();
+        endif;
+    
+        if($res['payments'] != 0):
+            header('Location: ../views/payments.msg.view.php'); 
+            exit();
+        endif;
+    
         return $res; // Assoc array contains student's data upon student national ID
     }
     
@@ -32,15 +43,15 @@
         $grade = $_POST['grade'];
 
         if($grade == "Primary 1" || $grade == "Primary 2" || $grade == "Primary 3"):
-            $res = getQueryByStudentId($student__id, "lower_primary_t2_2024", $conn);
+            $res = getStudentsDataByID($student__id, "lower_primary_t2_2024", $conn);
         elseif($grade == "Primary 4" || $grade == "Primary 5" || $grade == "Primary 6"):
-            $res = getQueryByStudentId($student__id, "upper_primary_t2_2024", $conn);
+            $res = getStudentsDataByID($student__id, "upper_primary_t2_2024", $conn);
         elseif($grade == "Preparatory 1" || $grade == "Preparatory 2"):
-            $res = getQueryByStudentId($student__id, "prep_t2_2024", $conn);
+            $res = getStudentsDataByID($student__id, "prep_t2_2024", $conn);
         elseif($grade == "Secondary 1" || $grade == "Secondary 2"):
-            $res = getQueryByStudentId($student__id, "secondary_t2_2024", $conn);
+            $res = getStudentsDataByID($student__id, "secondary_t2_2024", $conn);
         else:
-            header('Location: ../msg.php'); // path is wrong
+            header('Location: ../msg.php');
             exit();
         endif;
 
@@ -50,6 +61,6 @@
         exit();
  
     else:
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     endif;
